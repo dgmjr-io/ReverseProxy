@@ -1,0 +1,29 @@
+{
+  "ReverseProxyConfig": {
+    "Upstreams": [
+      {
+        "Host": "reverseproxy-5270.use.rel.tunnels.api.visualstudio.com",
+        "UpstreamHost": "dgmjrsleet.blob.core.windows.net",
+        "Replacements": {
+          "dgmjrsleet.blob.core.windows.net/dgmjrsleet": "reverseproxy-5270.use.rel.tunnels.api.visualstudio.com"
+        },
+        "Routes": [
+          {
+            "ProxyRoute": "/",
+            "UpstreamRoute": "/dgmjrsleet/"
+          }
+        ]
+      },
+      {
+        "Host": "reverseproxy-5270.use.rel.tunnels.api.visualstudio.com",
+        "UpstreamHost": "google.com",
+        "Routes": [
+          {
+            "ProxyRoute": "/google",
+            "UpstreamRoute": "/search?q=nuget"
+          }
+        ]
+      }
+    ]
+  }
+}

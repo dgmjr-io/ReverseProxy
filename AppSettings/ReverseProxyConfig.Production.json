@@ -1,0 +1,19 @@
+{
+  "ReverseProxyConfig": {
+    "Upstreams": [
+      {
+        "Host": "sleet.nuget.software",
+        "UpstreamHost": "dgmjrsleet.blob.core.windows.net",
+        "Replacements": {
+          "dgmjrsleet.blob.core.windows.net/dgmjrsleet": "sleet.nuget.software"
+        },
+        "Routes": [
+          {
+            "ProxyRoute": "/",
+            "UpstreamRoute": "/dgmjrsleet/"
+          }
+        ]
+      }
+    ]
+  }
+}

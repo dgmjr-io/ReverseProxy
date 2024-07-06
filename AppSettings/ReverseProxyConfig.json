@@ -1,0 +1,14 @@
+{
+  "ReverseProxyConfig": {
+    "DefaultUpstream": {
+      "Host": "",
+      "UpstreamHost": "google.com",
+      "Routes": [
+        {
+          "ProxyRoute": "/",
+          "UpstreamRoute": "/search?q="
+        }
+      ]
+    }
+  }
+}

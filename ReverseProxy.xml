@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReverseProxy</name>
+    </assembly>
+    <members>
+        <member name="F:ThisAssembly.Git.IsDirty">
+            <summary>
+            Gets whether the current repository is dirty.
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.IsDirtyString">
+            <summary>
+            => @"false"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.RepositoryUrl">
+            <summary>
+            => @""
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.Branch">
+            <summary>
+            => @"main"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.Commit">
+            <summary>
+            => @"df534ac"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.Sha">
+            <summary>
+            => @"df534ac53f410d21c08017b55647ecded61be850"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.CommitDate">
+            <summary>
+            => @""
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.Commits">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.Tag">
+            <summary>
+            => @""
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.BaseTag">
+            <summary>
+            => @""
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.BaseVersion.Major">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.BaseVersion.Minor">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.BaseVersion.Patch">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.SemVer.Major">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.SemVer.Minor">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.SemVer.Patch">
+            <summary>
+            => @"0"
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.SemVer.Label">
+            <summary>
+            => @""
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.SemVer.DashLabel">
+            <summary>
+            => @""
+            </summary>
+        </member>
+        <member name="F:ThisAssembly.Git.SemVer.Source">
+            <summary>
+            => @"Default"
+            </summary>
+        </member>
+    </members>
+</doc>
