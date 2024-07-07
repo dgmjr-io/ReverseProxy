@@ -11,7 +11,7 @@
         </member>
         <member name="F:ThisAssembly.Git.IsDirtyString">
             <summary>
-            => @"false"
+            => @"true"
             </summary>
         </member>
         <member name="F:ThisAssembly.Git.RepositoryUrl">
@@ -26,12 +26,12 @@
         </member>
         <member name="F:ThisAssembly.Git.Commit">
             <summary>
-            => @"df534ac"
+            => @"bccc9cc"
             </summary>
         </member>
         <member name="F:ThisAssembly.Git.Sha">
             <summary>
-            => @"df534ac53f410d21c08017b55647ecded61be850"
+            => @"bccc9cc127308e43558847c43bee995d0d773e17"
             </summary>
         </member>
         <member name="F:ThisAssembly.Git.CommitDate">
