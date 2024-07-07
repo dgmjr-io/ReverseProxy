@@ -1,16 +1,27 @@
 using System.Net;
 using System.Net.Http;
-
-using static System.IO.Path;
-using Serilog;
-
-using Constants = Dgmjr.AspNetCore.ReverseProxy.Constants;
-using Microsoft.AspNetCore.ResponseCompression;
+using System.Reflection.Metadata;
+using System.Text.RegularExpressions;
 
 using Dgmjr.AspNetCore.ReverseProxy.Middleware;
 using Dgmjr.AspNetCore.ReverseProxy.Models;
 
-// Add this using directiveusing Microsoft.Extensions.Options;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.AspNetCore.DiagnosticListeners;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+using Microsoft.ApplicationInsights.AspNetCore.Logging;
+using Microsoft.ApplicationInsights.AspNetCore.TelemetryInitializers;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.W3C;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Extensions.Options;
+
+using Serilog;
+// Other required namespaces
+using static System.IO.Path;
+
+using Constants = Dgmjr.AspNetCore.ReverseProxy.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,13 +30,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 var appSettingsBasePath = Join(
     GetDirectoryName(typeof(ReverseProxyMiddleware).Assembly.Location),
-    Constants.AppSettings
+    Constants.Configuration
 );
-
 var appSettingsJsonFiles = Directory.GetFiles(appSettingsBasePath, $"*{Constants._Json}");
 var currentEnvironmentAppSettingsJsonFileRegexString =
     $".*\\.{builder.Environment.EnvironmentName}{Constants._Json}";
-var anyEnvironmentAppSettingsJsonFileRegexString = @"^[^.\s]+{Constants._Json}";
+var anyEnvironmentAppSettingsJsonFileRegexString = @$"^[^.\s]+{Constants._Json}";
 
 foreach (var appSettingsJsonFile in appSettingsJsonFiles)
 {
@@ -37,10 +47,35 @@ foreach (var appSettingsJsonFile in appSettingsJsonFiles)
         builder.Configuration.AddJsonFile(
             appSettingsJsonFile,
             optional: false,
-            reloadOnChange: true
+            reloadOnChange: false
         );
     }
 }
+
+builder.Configuration.AddSubstitution();
+
+// await builder.Configuration.AddKeyPerJsonFileAsync(
+//     Constants.Configuration,
+//     Constants.AppSettings,
+//     false,
+//     false,
+//     StaticLogger.GetLogger()
+// );
+
+builder.Services.AddApplicationInsightsTelemetry(
+    config => builder.Configuration.GetSection(Constants.ApplicationInsights).Bind(config)
+);
+
+// Automatically track dependencies
+builder.Services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>(
+    (module, o) =>
+    {
+        builder.Configuration
+            .GetSection($"{Constants.ApplicationInsights}:{Constants.DependencyTracking}")
+            .Bind(module);
+        builder.Configuration.GetSection(Constants.ApplicationInsights).Bind(o);
+    }
+);
 
 builder.Host.UseSerilog(
     (hostingContext, loggerConfiguration) =>
@@ -94,7 +129,6 @@ var app = builder.Build();
 app.UseResponseCompression();
 
 app.UseMiddleware<ReverseProxyMiddleware>();
-
 app.UseHttpsRedirection();
 
 await app.RunAsync();

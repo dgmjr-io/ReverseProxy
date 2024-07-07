@@ -1,0 +1,60 @@
+{
+  "Serilog": {
+    "$schema": "https://gist.cdn13.net/serilog.schema",
+    "Enrich": [
+      "FromLogContext",
+      "FromGlobalLogContext",
+      "WithThreadId",
+      "WithProperty",
+      "WithDemystifiedStackTraces",
+      "WithExceptionDetails",
+      "WithAspnetcoreHttpcontext",
+      "WithTelegramUserData",
+      "WithLogContextEnricher"
+    ],
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft": "Verbose",
+        "Microsoft.AspNetCore.Authentication": "Verbose",
+        "Microsoft.Hosting.Lifetime": "Verbose",
+        "System": "Verbose"
+      }
+    },
+    "Properties": {
+      "Application": "DGMJR's Reverse Proxy"
+    },
+    "Using": [
+      "Serilog.Sinks.Console",
+      "Serilog.Sinks.File",
+      "Serilog.Sinks.ApplicationInsights",
+      "Serilog.Sinks.OpenTelemetry"
+    ],
+    "WriteTo": [
+      {
+        "Args": {
+          "connectionString": "${ConnectionStrings:ApplicationInsights}",
+          "telemetryConverter": "Serilog.Sinks.ApplicationInsights.TelemetryConverters.TraceTelemetryConverter, Serilog.Sinks.ApplicationInsights"
+        },
+        "Name": "ApplicationInsights"
+      },
+      {
+        "Args": {
+          "OutputTemplate": "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}"
+        },
+        "Name": "Console"
+      },
+      {
+        "Args": {
+          "outputTemplate": "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
+          "path": "Logs/log.log",
+          "rollingInterval": "Day"
+        },
+        "Name": "File"
+      },
+      {
+        "Name": "AzureApp"
+      }
+    ]
+  }
+}

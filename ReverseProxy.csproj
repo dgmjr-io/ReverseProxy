@@ -8,6 +8,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsNuGetized>false</IsNuGetized>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <UserSecretsId>ReverseProxy</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,8 @@
     <PackageReference Include="Serilog.Exceptions" VersionOverride="[8.4.0,)" />
     <PackageReference Include="Serilog.Extensions.Logging" VersionOverride="[8.0.0,)" />
     <PackageReference Include="Serilog.Sinks.AzureApp" VersionOverride="[3.1.0,)" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" VersionOverride="[2.22.0,)" />
+    <PackageReference Include="Microsoft.ApplicationInsights.DependencyCollector" VersionOverride="[2.22.0,)" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,19 @@
+{
+  "ApplicationInsights:DependencyTracking": {
+    "$schema": "https://jsonschema.xyz/schemas/Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule",
+    "enableSqlCommandTextInstrumentation": true,
+    "enableLegacyCorrelationHeadersInjection": true,
+    "enableW3CHeadersInjection": true,
+    "enableRequestIdHeaderInjectionInW3CMode": true,
+    "setComponentCorrelationHttpHeaders": true,
+    "enableAzureSdkTelemetryListener": true,
+    "includeDiagnosticSourceActivities": [
+      "Microsoft.Azure.ServiceBus",
+      "Microsoft.Azure.EventHubs",
+      "Microsoft.Azure.KeyVault",
+      "Microsoft.Azure.ServiceFabric",
+      "Microsoft.Azure.Storage",
+      "Microsoft.Azure.CognitiveServices"
+    ]
+  }
+}

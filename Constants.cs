@@ -13,11 +13,14 @@ namespace Dgmjr.AspNetCore.ReverseProxy;
 
 public static class Constants
 {
+    public const string DependencyTracking = nameof(DependencyTracking);
+    public const string ApplicationInsights = nameof(ApplicationInsights);
     public const string AppSettings = nameof(AppSettings);
     public const string _Json = ".json";
     public const string AppsettingsJson = "appsettings" + _Json;
     public const string ReverseProxyConfigJson = $"{nameof(ReverseProxyConfig)}{_Json}";
     public const string SerilogJson = $"{nameof(Serilog)}{_Json}";
+    public const string Configuration = nameof(Configuration);
 
     public static class Protocols
     {

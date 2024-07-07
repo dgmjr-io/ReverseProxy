@@ -26,12 +26,12 @@
         </member>
         <member name="F:ThisAssembly.Git.Commit">
             <summary>
-            => @"bccc9cc"
+            => @"3a8353a"
             </summary>
         </member>
         <member name="F:ThisAssembly.Git.Sha">
             <summary>
-            => @"bccc9cc127308e43558847c43bee995d0d773e17"
+            => @"3a8353a4624feec1110d81ad72464d48664a0341"
             </summary>
         </member>
         <member name="F:ThisAssembly.Git.CommitDate">

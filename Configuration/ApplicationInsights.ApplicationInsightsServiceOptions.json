@@ -1,0 +1,17 @@
+{
+  "$schema": "https://jsonschema.xyz/schemas/Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions",
+  "addAutoCollectedMetricExtractor": true,
+  "enableAppServicesHeartbeatTelemetryModule": true,
+  "enableAzureInstanceMetadataTelemetryModule": true,
+  "enableAuthenticationTrackingJavaScript": true,
+  "enableHeartbeat": true,
+  "enableDebugLogger": true,
+  "enableDependencyTrackingTelemetryModule": true,
+  "enableRequestTrackingTelemetryModule": true,
+  "enableDiagnosticsTelemetryModule": true,
+  "enableActiveTelemetryConfigurationSetup": true,
+  "enableAdaptiveSampling": true,
+  "enablePerformanceCounterCollectionModule": true,
+  "enableEventCounterCollectionModule": true,
+  "enableQuickPulseMetricStream": true
+}
