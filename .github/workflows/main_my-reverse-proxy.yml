@@ -22,6 +22,15 @@ jobs:
           dotnet-version: '8.x'
           include-prerelease: true
 
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2.0.0
+
+      - name: Setup NuGet for DGMJR Sleet
+        uses: dgmjr-actions/setup-nuget@main
+        with:
+          name: sleet
+          source: $(( variables.SLEET_ENDPOINT }}          
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
