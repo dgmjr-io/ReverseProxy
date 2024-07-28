@@ -3,6 +3,10 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App - my-reverse-proxy
 
+concurrency:
+  group: Build and deploy ASP.Net Core app to Azure Web App - my-reverse-proxy
+  cancel-in-progress: true
+
 on:
   push:
     branches:
