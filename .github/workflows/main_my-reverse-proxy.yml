@@ -33,7 +33,7 @@ jobs:
         uses: dgmjr-actions/setup-nuget@main
         with:
           name: sleet
-          source: ${{ variables.SLEET_ENDPOINT }}          
+          source: ${{ vars.SLEET_ENDPOINT }}          
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
