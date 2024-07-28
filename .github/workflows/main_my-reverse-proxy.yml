@@ -26,6 +26,9 @@ jobs:
           dotnet-version: '8.x'
           include-prerelease: true
 
+      - name: Copy global.json
+        run: cp ./global.json ~/
+
       - name: Setup NuGet
         uses: nuget/setup-nuget@v2.0.0
 
