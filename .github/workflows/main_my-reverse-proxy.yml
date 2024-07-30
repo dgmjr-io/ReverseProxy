@@ -36,7 +36,8 @@ jobs:
         uses: dgmjr-actions/setup-nuget@main
         with:
           name: sleet
-          source: ${{ vars.SLEET_ENDPOINT }}          
+          source: ${{ vars.BAGET_ENDPOINT }}
+          key: ${{ secrets.BAGET_API_KEY }}
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
