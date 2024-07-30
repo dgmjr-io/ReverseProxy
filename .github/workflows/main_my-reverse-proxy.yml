@@ -32,10 +32,10 @@ jobs:
       - name: Setup NuGet
         uses: nuget/setup-nuget@v2.0.0
 
-      - name: Setup NuGet for DGMJR Sleet
+      - name: Setup BaGet
         uses: dgmjr-actions/setup-nuget@main
         with:
-          name: sleet
+          name: BaGet
           source: ${{ vars.BAGET_ENDPOINT }}
           key: ${{ secrets.BAGET_API_KEY }}
 
