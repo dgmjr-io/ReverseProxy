@@ -7,6 +7,8 @@ concurrency:
   group: Build and deploy ASP.Net Core app to Azure Web App - my-reverse-proxy
   cancel-in-progress: true
 
+permissions: write-all
+
 on:
   push:
     branches:
@@ -19,6 +21,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: ./ReverseProxy
+
+      - uses: actions/checkout@4
+        with:
+          repository: dgmjr-io/Packages
+          token: ${{ github.token }}
+          path: ./Packages
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
@@ -27,7 +37,7 @@ jobs:
           include-prerelease: true
 
       - name: Copy global.json
-        run: cp ./global.json ~/
+        run: cp ./ReverseProxy/global.json ~/
 
       - name: Setup NuGet
         uses: nuget/setup-nuget@v2.0.0
@@ -40,10 +50,10 @@ jobs:
           key: ${{ secrets.BAGET_API_KEY }}
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ./ReverseProxy/ReverseProxy.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ./ReverseProxy/ReverseProxy.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
